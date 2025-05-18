@@ -1,6 +1,7 @@
 import React from 'react';
 import Typography from './Typography';
 import { FaCalendar, FaMapMarkerAlt } from 'react-icons/fa';
+import type { IconType } from 'react-icons';
 
 interface EventProps {
   title: string;
@@ -9,6 +10,7 @@ interface EventProps {
   location?: string;
   children?: React.ReactNode;
   className?: string;
+  icon?: IconType | React.ReactNode;
 }
 
 const Event: React.FC<EventProps> = ({
@@ -17,12 +19,18 @@ const Event: React.FC<EventProps> = ({
   date,
   location,
   children,
-  className = ''
+  className = '',
+  icon
 }) => {
   return (
     <div className={`mb-[var(--spacing-item)] ${className}`}>
       <div>
-        <Typography variant="subsection">
+        <Typography variant="subsection" className={icon?'flex gap-2':''}>
+          {icon && (
+            <div className='text-sm my-auto w-6'>
+              {React.isValidElement(icon) ? icon : React.createElement(icon as IconType)}
+            </div>
+          )}
           {title}
         </Typography>
         {organization && (
