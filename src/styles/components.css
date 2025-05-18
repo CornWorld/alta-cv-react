@@ -7,13 +7,10 @@
     flex-direction: column;
   }
 
-  .cv-main-column {
-    @apply w-3/5 lg:w-full;
+  .cv-columns {
+    @apply flex gap-[var(--spacing-column)];
   }
 
-  .cv-side-column {
-    @apply w-2/5 lg:w-full;
-  }
 
   .cv-section {
     @apply mb-[var(--spacing-section)];
@@ -33,7 +30,7 @@
   }
 
   .cv-item {
-    @apply flex items-baseline gap-2;
+    @apply flex items-baseline gap-2 text-sm;
   }
 
   .cv-item-marker {
@@ -41,7 +38,7 @@
   }
 
   .cv-item-content {
-    @apply flex-grow text-base;
+    @apply flex-grow;
   }
 
   .cv-item-link {

@@ -14,6 +14,7 @@
   --color-cv-icon: #8F0D0D;        /* PastelRed - For icons */
 
   /* Spacing - Consistent across themes */
+  --spacing-column: 1rem; 
   --spacing-section: 1.3rem;         /* Space between sections */
   --spacing-item: 1rem;           /* Space between items */
   --spacing-skill: 1rem;          /* Space between skills */
@@ -24,8 +25,8 @@
   --size-page-width: 210mm;             /* A4 width */
   --size-page-height: 297mm;            /* A4 height */
   --size-page-margin: 1.25cm;           /* Page margins */
-  --size-column-sep: 0.8cm;             /* Column separation */
-  --size-content-padding: 2rem;         /* Content padding */
+  --size-column-sep: 0.3cm;             /* Column separation */
+  --size-content-padding: 1rem;         /* Content padding */
 
   /* Typography */
   --font-family-sans: 'Jetbrains Mono','Lato', sans-serif;

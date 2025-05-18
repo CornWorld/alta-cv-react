@@ -20,7 +20,7 @@ const Event: React.FC<EventProps> = ({
   className = ''
 }) => {
   return (
-    <div className={`mb-[var(--cv-item-spacing)] ${className}`}>
+    <div className={`mb-[var(--spacing-item)] ${className}`}>
       <div>
         <Typography variant="subsection">
           {title}

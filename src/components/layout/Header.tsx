@@ -50,13 +50,13 @@ const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className={`relative flex justify-between items-start gap-8 mb-8 ${className}`}>
+    <header className={`relative flex justify-between items-start gap-8 ${className}`}>
       <div className="flex-grow">
-        <Typography variant="name">
+        <Typography variant="name" className='mb-1'>
           {name}
         </Typography>
         
-        <Typography variant="tagline" className="mt-2">
+        <Typography variant="tagline" className="mb-1">
           {tagline}
         </Typography>
  
@@ -70,7 +70,7 @@ const Header: React.FC<HeaderProps> = ({
           <img
             src={photoUrl}
             alt={`Photo of ${name}`}
-            className="w-32 h-32 rounded-full object-cover border-2 border-[var(--color-cv-accent)]"
+            className="w-26 h-26 rounded-full object-cover border-[var(--color-cv-accent)]"
           />
         </div>
       )}

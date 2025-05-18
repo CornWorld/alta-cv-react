@@ -38,28 +38,6 @@
 
 React 实现：
 ```typescript
-// styles/theme.ts
-export const defaultTheme = {
-  colors: {
-    accent: 'var(--cv-accent, #2B5B8F)',      // blue!70!black
-    emphasis: 'var(--cv-emphasis, #000000)',   // black
-    heading: 'var(--cv-heading, #000000)',     // black
-    headingRule: 'var(--cv-heading-rule, #000000)', // black
-    subheading: 'var(--cv-subheading, var(--cv-emphasis))',
-    body: 'var(--cv-body, #333333)',          // black!80!white
-    name: 'var(--cv-name, var(--cv-heading))',
-    tagline: 'var(--cv-tagline, var(--cv-accent))'
-  },
-  spacing: {
-    section: 'var(--cv-section-spacing, 1.5rem)',
-    item: 'var(--cv-item-spacing, 1rem)'
-  },
-  print: {
-    pageWidth: 'var(--cv-page-width, 210mm)',
-    pageHeight: 'var(--cv-page-height, 297mm)',
-    margin: 'var(--cv-page-margin, 2cm)'
-  }
-};
 
 // components/ThemeProvider.tsx
 interface ThemeProviderProps {

@@ -15,7 +15,7 @@ const Section: React.FC<SectionProps> = ({
   sidebar
 }) => {
   return (
-    <section className={`relative mb-8 ${className}`}>
+    <section className={`relative ${className}`}>
       {sidebar && (
         <div 
           className="absolute right-full mr-4 text-right" 
