@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from './components/layout/Header';
 import Section from './components/layout/Section';
 import Event from './components/elements/Event';
 import Achievement from './components/elements/Achievement';
@@ -7,6 +6,8 @@ import Tag from './components/elements/Tag';
 import List from './components/elements/List';
 import Divider from './components/elements/Divider';
 import ThemeProvider from './theme/ThemeProvider';
+import Typography from './components/elements/Typography';
+import Contact from './components/elements/Contact';
 import { FaTrophy, FaEnvelope, FaPhone, FaGithub, FaHome, FaLink } from 'react-icons/fa';
 import './App.css';
 
@@ -14,32 +15,39 @@ function App() {
   return (
     <ThemeProvider>
       <div className="cv-container">
-        <Header
-          name="CornWorld"
-          tagline="前端开发工程师"
-          photoUrl="/images/Globe_High.png"
-          contacts={[
-            {
-              icon: <FaEnvelope />,
-              text: "job@corn.im",
-              href: "mailto:job@corn.im"
-            },
-            {
-              icon: <FaPhone />,
-              text: "+86 XXX-XXXX-3800"
-            },
-            {
-              icon: <FaHome />,
-              text: "Corn.Li",
-              href: "https://corn.li"
-            },
-            {
-              icon: <FaGithub />,
-              text: "CornWorld",
-              href: "https://github.com/CornWorld"
-            }
-          ]}
-        />
+        <div className="flex justify-between items-start gap-8">
+          <div className="flex-grow">
+            <Typography variant="name" className='mb-1'>
+              CornWorld
+            </Typography>
+            
+            <Typography variant="tagline" className="mb-1">
+              前端开发工程师
+            </Typography>
+
+            <Contact.Root>
+              <Contact.Item icon={<FaEnvelope />} href="mailto:job@corn.im">
+                job@corn.im
+              </Contact.Item>
+              <Contact.Item icon={<FaPhone />}>
+                +86 XXX-XXXX-3800
+              </Contact.Item>
+              <Contact.Item icon={<FaHome />} href="https://corn.li">
+                Corn.Li
+              </Contact.Item>
+              <Contact.Item icon={<FaGithub />} href="https://github.com/CornWorld">
+                CornWorld
+              </Contact.Item>
+            </Contact.Root>
+          </div>
+          <div className="flex-shrink-0">
+            <img
+              src="/images/Globe_High.png"
+              alt="CornWorld's photo"
+              className="w-26 h-26 rounded-full object-cover border-[var(--color-cv-accent)]"
+            />
+          </div>
+        </div>
 
         <Section title="技术能力">
           <List>

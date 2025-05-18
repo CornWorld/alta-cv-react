@@ -34,7 +34,7 @@
   }
 
   .cv-item-marker {
-    @apply text-[var(--color-cv-accent)] text-sm flex-shrink-0;
+    @apply text-[var(--color-cv-accent)] text-sm my-auto w-3;
   }
 
   .cv-item-content {
