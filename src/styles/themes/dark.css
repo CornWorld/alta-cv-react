@@ -1,0 +1,36 @@
+@theme inline {
+  --color-primary: var(--color-cv-accent);
+  --color-emphasis: var(--color-cv-emphasis);
+  --color-heading: var(--color-cv-heading);
+  --color-heading-rule: var(--color-cv-heading-rule);
+  --color-subheading: var(--color-cv-subheading);
+  --color-body: var(--color-cv-body);
+  --color-name: var(--color-cv-name);
+  --color-tagline: var(--color-cv-tagline);
+  --color-icon: var(--color-cv-icon);
+}
+
+[data-theme="dark"] {
+  /* Colors */
+  --color-cv-accent: #FF6B6B;      /* Light Red */
+  --color-cv-emphasis: #E0E0E0;    /* Light Grey */
+  --color-cv-heading: #FF8F8F;     /* Lighter Red */
+  --color-cv-heading-rule: #FFD700; /* Gold */
+  --color-cv-subheading: #FF6B6B;  /* Light Red */
+  --color-cv-body: #CCCCCC;        /* Grey */
+  --color-cv-name: #FFFFFF;        /* White */
+  --color-cv-tagline: #FF6B6B;     /* Light Red */
+  --color-cv-icon: #FF6B6B;        /* Same as accent */
+
+  /* Keep the same spacing and dimensions as default theme */
+  --spacing-section: 2rem;
+  --spacing-item: 1rem;
+  --spacing-skill: 1rem;
+  --size-section-rule-height: 0.25rem;
+  --size-section-rule-width: 3rem;
+  --size-page-width: 210mm;
+  --size-page-height: 297mm;
+  --size-page-margin: 1.25cm;
+  --size-column-sep: 1.2cm;
+  --size-content-padding: 2rem;
+} 

@@ -92,28 +92,25 @@
    ```
 
 2. **样式定制**
-   ```tsx
-   // theme.ts
-   export const theme = {
-     colors: {
-       primary: '#2E2E2E',
-       accent: '#8F0D0D',
-       // ...
-     },
-     spacing: {
-       section: '1.5rem',
-       item: '1rem',
-     },
-     typography: {
-       name: 'text-4xl font-bold',
-       section: 'text-2xl font-semibold',
+   ```css
+   /* styles/themes/custom.css */
+   @layer theme {
+     :root[data-theme="custom"] {
+       --color-cv-accent: #2E2E2E;
+       --color-cv-emphasis: #333333;
+       --color-cv-heading: #1A1A1A;
+       --color-cv-heading-rule: #666666;
+       --color-cv-subheading: #2E2E2E;
+       --color-cv-body: #4D4D4D;
+       --color-cv-name: #000000;
+       --color-cv-tagline: #2E2E2E;
      }
    }
    
-   // cv.tsx
+   /* cv.tsx */
    const CV = () => {
      return (
-       <ThemeProvider theme={theme}>
+       <ThemeProvider initialTheme="custom">
          {/* CV content */}
        </ThemeProvider>
      )

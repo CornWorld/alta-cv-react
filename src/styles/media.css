@@ -1,0 +1,56 @@
+/* Print styles */
+@media print {
+  @page {
+    size: A4;
+    margin: var(--size-page-margin);
+  }
+
+  html, body {
+    @apply m-0 p-0;
+    width: var(--size-page-width);
+    height: var(--size-page-height);
+  }
+
+  .cv-container {
+    @apply p-0 flex flex-col;
+    height: 100%;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  .cv-section {
+    page-break-inside: avoid;
+  }
+
+  .cv-columns {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  nav, button, .no-print {
+    @apply hidden;
+  }
+
+  /* 强制内容在一页内显示 */
+  .cv-main-column,
+  .cv-side-column {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .cv-container {
+    @apply flex flex-col;
+  }
+
+  .cv-main-column,
+  .cv-side-column {
+    @apply w-full;
+  }
+
+  .cv-section-columns {
+    @apply flex flex-col;
+  }
+} 

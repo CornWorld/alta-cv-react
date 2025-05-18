@@ -1,0 +1,36 @@
+@theme inline {
+  --color-primary: var(--color-cv-accent);
+  --color-emphasis: var(--color-cv-emphasis);
+  --color-heading: var(--color-cv-heading);
+  --color-heading-rule: var(--color-cv-heading-rule);
+  --color-subheading: var(--color-cv-subheading);
+  --color-body: var(--color-cv-body);
+  --color-name: var(--color-cv-name);
+  --color-tagline: var(--color-cv-tagline);
+  --color-icon: var(--color-cv-icon);
+}
+
+[data-theme="purple"] {
+  /* Colors */
+  --color-cv-accent: #3E0097;      /* VividPurple */
+  --color-cv-emphasis: #2E2E2E;    /* SlateGrey */
+  --color-cv-heading: #3E0097;     /* VividPurple */
+  --color-cv-heading-rule: #3E0097; /* VividPurple */
+  --color-cv-subheading: #3E0097;  /* VividPurple */
+  --color-cv-body: #666666;        /* LightGrey */
+  --color-cv-name: #000000;        /* black */
+  --color-cv-tagline: #3E0097;     /* VividPurple */
+  --color-cv-icon: #3E0097;        /* Same as accent */
+
+  /* Keep the same spacing and dimensions as default theme */
+  --spacing-section: 2rem;
+  --spacing-item: 1rem;
+  --spacing-skill: 1rem;
+  --size-section-rule-height: 0.25rem;
+  --size-section-rule-width: 3rem;
+  --size-page-width: 210mm;
+  --size-page-height: 297mm;
+  --size-page-margin: 1.25cm;
+  --size-column-sep: 1.2cm;
+  --size-content-padding: 2rem;
+} 

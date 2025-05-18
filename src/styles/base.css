@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Lato:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Base Colors - These can be overridden by themes */
+  --color-cv-accent: #8F0D0D;      /* PastelRed - Default theme accent */
+  --color-cv-emphasis: #2E2E2E;    /* SlateGrey - For emphasized text */
+  --color-cv-heading: #450808;     /* DarkPastelRed - Section headings */
+  --color-cv-heading-rule: #E7D192; /* GoldenEarth - Section divider */
+  --color-cv-subheading: #000000;  /* PastelRed - Subsection headings */
+  --color-cv-body: #666666;        /* LightGrey - Main text color */
+  --color-cv-name: #000000;        /* Black - For name in header */
+  --color-cv-tagline: #8F0D0D;     /* PastelRed - For tagline in header */
+  --color-cv-icon: #8F0D0D;        /* PastelRed - For icons */
+
+  /* Spacing - Consistent across themes */
+  --spacing-section: 1.3rem;         /* Space between sections */
+  --spacing-item: 1rem;           /* Space between items */
+  --spacing-skill: 1rem;          /* Space between skills */
+  
+  /* Dimensions - A4 paper and layout settings */
+  --size-section-rule-height: 0.25rem;  /* Section divider height */
+  --size-section-rule-width: 3rem;      /* Section divider width */
+  --size-page-width: 210mm;             /* A4 width */
+  --size-page-height: 297mm;            /* A4 height */
+  --size-page-margin: 1.25cm;           /* Page margins */
+  --size-column-sep: 0.8cm;             /* Column separation */
+  --size-content-padding: 2rem;         /* Content padding */
+
+  /* Typography */
+  --font-family-sans: 'Jetbrains Mono','Lato', sans-serif;
+  --font-family-serif: 'Roboto Slab', serif;
+}
+
+/* Base styles */
+@layer base {
+  body {
+    font-family: var(--font-family-sans);
+    color: var(--color-cv-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-serif);
+    font-weight: bold;
+    color: var(--color-cv-heading);
+  }
+}

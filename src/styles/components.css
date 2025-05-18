@@ -1,0 +1,111 @@
+/* Components */
+@layer components {
+  .cv-container {
+    @apply max-w-[var(--size-page-width)] mx-auto px-[var(--size-content-padding)] gap-[var(--size-column-sep)];
+    min-height: var(--size-page-height);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cv-main-column {
+    @apply w-3/5 lg:w-full;
+  }
+
+  .cv-side-column {
+    @apply w-2/5 lg:w-full;
+  }
+
+  .cv-section {
+    @apply mb-[var(--spacing-section)];
+  }
+
+  .cv-section-title {
+    @apply font-serif font-bold text-[var(--color-cv-heading)] text-xl mb-4 relative;
+  }
+
+  .cv-section-title::after {
+    @apply content-[''] absolute left-0 bottom-0 bg-[var(--color-cv-heading-rule)] w-[var(--size-section-rule-width)] h-[var(--size-section-rule-height)];
+  }
+
+  /* ItemList and Item styles */
+  .cv-item-list {
+    @apply flex flex-col gap-1;
+  }
+
+  .cv-item {
+    @apply flex items-baseline gap-2;
+  }
+
+  .cv-item-marker {
+    @apply text-[var(--color-cv-accent)] text-sm flex-shrink-0;
+  }
+
+  .cv-item-content {
+    @apply flex-grow text-base;
+  }
+
+  .cv-item-link {
+    @apply text-[var(--color-cv-accent)] hover:underline;
+  }
+
+  .cv-event {
+    @apply mb-[var(--spacing-item)];
+  }
+
+  .cv-event-header {
+    @apply flex flex-wrap items-baseline justify-between gap-2 mb-2;
+  }
+
+  .cv-event-title {
+    @apply text-[var(--color-cv-emphasis)] font-bold;
+  }
+
+  .cv-event-organization {
+    @apply text-[var(--color-cv-accent)];
+  }
+
+  .cv-event-meta {
+    @apply flex items-center gap-2 text-sm text-[var(--color-cv-body)];
+  }
+
+  .cv-achievement {
+    @apply flex items-start gap-4 mb-4;
+  }
+
+  .cv-achievement-icon {
+    @apply text-[var(--color-cv-icon)] text-xl flex-shrink-0;
+  }
+
+  .cv-tag {
+    @apply inline-flex items-center px-2 py-1 rounded-md text-base bg-[color-mix(in_oklch,var(--color-cv-accent),transparent_90%)] text-[var(--color-cv-accent)] mr-2 mb-2;
+  }
+
+  .cv-skills-grid {
+    @apply grid grid-cols-2 gap-[var(--spacing-skill)];
+  }
+
+  .cv-contact-info {
+    @apply flex flex-wrap gap-4;
+  }
+
+  .cv-contact-item {
+    @apply flex items-center gap-2;
+  }
+
+  .cv-contact-icon {
+    @apply text-[var(--color-cv-icon)];
+  }
+
+  .cv-divider {
+    @apply w-full my-[var(--spacing-item)];
+    background-image: linear-gradient(90deg, 
+      color-mix(in oklch, var(--color-cv-body), transparent 70%) 50%,
+      transparent 50%
+    );
+    background-size: 8px 1px;
+    background-repeat: repeat-x;
+    height: 1px;
+    border: none;
+
+  }
+} 

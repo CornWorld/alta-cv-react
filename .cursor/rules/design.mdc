@@ -5,3 +5,4 @@ alwaysApply: true
 ---
 
 - 随时查看 [design.md](mdc:docs/design.md) ，看看目前是否脱离方向
+- 对于编写组件的时候，查看 [components.md](mdc:docs/components.md)
