@@ -15,8 +15,8 @@
 
   /* Web/Page Layout */
   --web-page-max-width: 100%;
-  --web-page-margin: 64px 64px 64px 64px;
-  --cv-content-padding-x: 32px;
+  --web-page-margin: 4rem 4rem 4rem 4rem;
+  --cv-content-padding-x: 2rem;
 
   /* Component Spacing (统一前缀) */
   --cv-section-spacing-y: 0.8rem;
@@ -29,6 +29,7 @@
   /* Typography */
   --font-family-sans: 'Jetbrains Mono','Lato', sans-serif;
   --font-family-serif: 'Roboto Slab', serif;
+  
   --font-size-base: calc(16px);
 }
 

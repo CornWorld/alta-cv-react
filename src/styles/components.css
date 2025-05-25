@@ -122,9 +122,9 @@
       color-mix(in oklch, var(--color-cv-body), transparent 70%) 50%,
       transparent 50%
     );
-    background-size: 8px 1px;
+    background-size: 0.5rem 0.0625rem;
     background-repeat: repeat-x;
-    height: 1px;
+    height: 0.0625rem;
     border: none;
   }
 
