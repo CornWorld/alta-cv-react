@@ -13,32 +13,32 @@
   --color-cv-tagline: #8F0D0D;     /* PastelRed - For tagline in header */
   --color-cv-icon: #8F0D0D;        /* PastelRed - For icons */
 
-  /* Spacing - Consistent across themes */
-  --spacing-column: 1rem; 
-  --spacing-section: 1.3rem;         /* Space between sections */
-  --spacing-item: 1rem;           /* Space between items */
-  --spacing-skill: 1rem;          /* Space between skills */
-  
-  /* Dimensions - A4 paper and layout settings */
-  --size-section-rule-height: 0.25rem;  /* Section divider height */
-  --size-section-rule-width: 3rem;      /* Section divider width */
-  --size-page-width: 210mm;             /* A4 width */
-  --size-page-height: 297mm;            /* A4 height */
-  --size-page-margin: 1.25cm;           /* Page margins */
-  --size-column-sep: 0.3cm;             /* Column separation */
-  --size-content-padding: 1rem;         /* Content padding */
+  /* Web/Page Layout */
+  --web-page-max-width: 100%;
+  --web-page-margin: 64px 64px 64px 64px;
+  --cv-content-padding-x: 32px;
+
+  /* Component Spacing (统一前缀) */
+  --cv-section-spacing-y: 0.8rem;
+  --cv-column-gap: 1rem;
+  --cv-item-spacing-y: 0.5rem;
+  --cv-skill-gap: 1rem;
+  --cv-section-rule-width: 3rem;
+  --cv-section-rule-height: 0.25rem;
 
   /* Typography */
   --font-family-sans: 'Jetbrains Mono','Lato', sans-serif;
   --font-family-serif: 'Roboto Slab', serif;
+  --font-size-base: calc(16px);
 }
 
 /* Base styles */
 @layer base {
   body {
     font-family: var(--font-family-sans);
+    font-size: var(--text-base);
     color: var(--color-cv-body);
-    line-height: 1.5;
+    line-height: var(--text-base--line-height);
     -webkit-font-smoothing: antialiased;
   }
 
@@ -46,5 +46,9 @@
     font-family: var(--font-family-serif);
     font-weight: bold;
     color: var(--color-cv-heading);
+  }
+
+  html {
+    font-size: var(--font-size-base);
   }
 }

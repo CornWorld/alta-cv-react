@@ -15,23 +15,18 @@ const Section: React.FC<SectionProps> = ({
   sidebar
 }) => {
   return (
-    <section className={`relative ${className}`}>
+    <section className={`cv-section relative ${className}`}>
       {sidebar && (
-        <div 
-          className="absolute right-full mr-4 text-right" 
-          style={{ width: 'calc(var(--size-column-sep) * 2)' }}
-        >
+        <div className="cv-section-sidebar">
           {sidebar}
         </div>
       )}
 
       <div>
-        <Typography variant="section" className="font-serif">
+        <Typography variant="section" className="cv-section-title">
           {title}
         </Typography>
-        
-        <div className="h-0.5 mt-1 mb-4 bg-[var(--color-cv-heading-rule)]" />
-
+        <div className="cv-section-rule" />
         <div className="space-y-4">
           {children}
         </div>

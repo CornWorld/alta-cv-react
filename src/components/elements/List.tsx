@@ -13,6 +13,7 @@ const Item: React.FC<ItemProps> = ({
   children,
   className = ''
 }) => {
+  const isStringMarker = typeof marker === 'string';
   const content = (
     <div className="cv-item-content">
       {children}
@@ -20,8 +21,13 @@ const Item: React.FC<ItemProps> = ({
   );
 
   return (
-    <div className={`cv-item ${className}`}>
-      <span className="cv-item-marker">{marker}</span>
+    <div
+      className={`cv-item ${className}`}
+      {...(isStringMarker ? { 'data-marker': marker } : {})}
+    >
+      {!isStringMarker && (
+        <span className="cv-item-marker">{marker}</span>
+      )}
       {href ? (
         <a href={href} target="_blank" rel="noopener noreferrer" className="cv-item-link">
           {content}

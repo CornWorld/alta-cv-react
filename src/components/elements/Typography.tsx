@@ -32,12 +32,12 @@ const Typography: React.FC<TypographyProps> = ({
   className = ''
 }) => {
   const styles = {
-    name: 'text-3xl font-[800] text-cv-name leading-tight',
+    name: 'text-4xl font-[800] text-cv-name leading-tight',
     tagline: 'text-base font-bold text-cv-tagline',
     section: 'text-2xl font-bold text-cv-heading',
-    subsection: 'text-lg font-bold text-cv-subheading',
+    subsection: 'text-xl font-bold text-cv-subheading',
     body: 'text-base text-cv-body leading-relaxed',
-    caption: 'text-sm text-cv-body'
+    caption: 'text-base text-cv-body'
   } as const;
 
   const Component = component || defaultComponents[variant];

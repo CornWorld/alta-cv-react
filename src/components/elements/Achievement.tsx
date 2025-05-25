@@ -17,14 +17,14 @@ const Achievement: React.FC<AchievementProps> = ({
 }) => {
   return (
     <div className={`flex items-start gap-2 mb-4 ${className}`}>
-      <div className="h-full w-6 m-auto text-cv-accent">
+      <div className="h-full min-w-6 m-auto text-cv-accent">
         <Icon size={22} />
       </div>
       <div className='flex-grow'>
-        <Typography variant="subsection" className='text-sm font-bold'>
+        <Typography variant="subsection" className='font-bold'>
           {title}
         </Typography>
-        <div className="text-sm text-cv-body">
+        <div className="text-base text-cv-body">
           {description}
         </div>
       </div>

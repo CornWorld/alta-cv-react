@@ -14,7 +14,7 @@ const Tag: React.FC<TagProps> = ({ children, className = '' }) => {
         px-2 
         py-1 
         rounded-md 
-        text-sm 
+        text-base 
         mr-2 
         mb-2
         bg-[color-mix(in_oklch,var(--color-cv-accent),transparent_90%)]

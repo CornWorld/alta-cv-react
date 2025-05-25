@@ -39,7 +39,7 @@ const Contact: React.FC<ContactProps> = ({ icon, href, children }) => {
 
 const Contacts: React.FC<ContactsProps> = ({ children, className = '' }) => {
   return (
-    <div className={`flex flex-wrap gap-4 text-sm ${className}`}>
+    <div className={`flex flex-wrap gap-4 text-base ${className}`}>
       {children}
     </div>
   );

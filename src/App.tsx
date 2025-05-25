@@ -9,7 +9,6 @@ import ThemeProvider from './theme/ThemeProvider';
 import Typography from './components/elements/Typography';
 import Contact from './components/elements/Contact';
 import { FaTrophy, FaEnvelope, FaPhone, FaGithub, FaHome, FaLink } from 'react-icons/fa';
-import { RiMiniProgramFill } from "react-icons/ri";
 import { RiWechatFill } from "react-icons/ri";
 import './App.css';
 
@@ -17,7 +16,7 @@ function App() {
   return (
     <ThemeProvider>
       <div className="cv-container">
-        <div className="flex justify-between items-start gap-8">
+        <div className="flex justify-between items-start gap-8 mb-4">
           <div className="flex-grow">
             <Typography variant="name" className='mb-1'>
               CornWorld
@@ -114,14 +113,14 @@ function App() {
 
               <Divider />
 
-              <Event
+              {/* <Event
                 title="cdMir 软件镜像下载站"
                 organization="个人项目"
                 date="2022.11 - 至今"
               >
                 <List>
                   <List.Item marker={<FaGithub />} href="https://github.com/HadTeam/cdMir">
-                    giHadTeam/cdMir
+                    HadTeam/cdMir
                   </List.Item>
                   <List.Item>使用 React + SemantiUI 开发的软件镜像下载站</List.Item>
                   <List.Item>使用 Service Worker 优化缓存，目前性能极佳，Lighthouse 96+</List.Item>
@@ -129,7 +128,7 @@ function App() {
                 </List>
               </Event>
 
-              <Divider />
+              <Divider /> */}
 
               <Event
                 title="DreamCat 博客主题"
@@ -138,8 +137,8 @@ function App() {
                 location="280+ Stars"
               >
                 <List>
-                  <List.Item marker={<FaLink />} href="https://github.com/LychApe/DreamCat">
-                    github.com/LychApe/DreamCat
+                  <List.Item marker={<FaGithub />} href="https://github.com/LychApe/DreamCat">
+                    LychApe/DreamCat
                   </List.Item>
                   <List.Item>使用 PHP + MDUI + JQuery 开发的 Typecho 博客主题</List.Item>
                   <List.Item>审计代码、修复错误，优化前端兼容性与性能</List.Item>
@@ -169,11 +168,12 @@ function App() {
             </Section>
 
             <Section title="个人能力">
-              <div className="mb-4">
+              <div className='mb-1'>
                 <Tag>持续学习</Tag>
                 <Tag>分析挖掘信息</Tag>
                 <Tag>适应需求</Tag>
               </div>
+              <Divider />
 
               <div>
                 <Tag>React</Tag>

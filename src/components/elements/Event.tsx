@@ -23,22 +23,22 @@ const Event: React.FC<EventProps> = ({
   icon
 }) => {
   return (
-    <div className={`mb-[var(--spacing-item)] ${className}`}>
+    <div className={`mb-[var(--cv-item-spacing-y)] ${className}`}>
       <div>
         <Typography variant="subsection" className={icon?'flex gap-2':''}>
           {icon && (
-            <div className='text-sm my-auto w-6'>
+            <div className='text-base my-auto w-6'>
               {React.isValidElement(icon) ? icon : React.createElement(icon as IconType)}
             </div>
           )}
           {title}
         </Typography>
         {organization && (
-          <div className="text-sm font-bold text-cv-accent mt-1">
+          <div className="text-base font-bold text-cv-accent mt-1">
             {organization}
           </div>
         )}
-        <div className="text-sm mt-2 flex flex-row flex-auto gap-4 flex-wrap">
+        <div className="text-base mt-2 flex flex-row flex-auto gap-4 flex-wrap">
           {date && (
             <div className="flex items-center gap-2 text-cv-body break-keep">
               <FaCalendar className="w-3 h-3" />
