@@ -8,7 +8,8 @@ import Divider from './components/elements/Divider';
 import ThemeProvider from './theme/ThemeProvider';
 import Typography from './components/elements/Typography';
 import Contact from './components/elements/Contact';
-import { FaTrophy, FaEnvelope, FaPhone, FaGithub, FaHome, FaLink } from 'react-icons/fa';
+import { FaTrophy, FaEnvelope, FaGithub, FaHome, FaCode } from 'react-icons/fa';
+import { HiBadgeCheck } from "react-icons/hi";
 import { RiWechatFill } from "react-icons/ri";
 import './App.css';
 
@@ -23,21 +24,23 @@ function App() {
             </Typography>
             
             <Typography variant="tagline" className="mb-1">
-              前端开发工程师
+              全栈开发工程师 <span className='text-cv-heading ml-2 mr-2'>&</span> 
+              AFO OIer <span className='text-cv-heading ml-2 mr-2'>&</span> 
+              OI-Wiki 用户
             </Typography>
 
             <Contact.Root>
               <Contact.Item icon={<FaEnvelope />} href="mailto:job@corn.im">
                 job@corn.im
               </Contact.Item>
-              <Contact.Item icon={<FaPhone />}>
-                +86 XXX-XXXX-3800
-              </Contact.Item>
               <Contact.Item icon={<FaHome />} href="https://corn.li">
                 Corn.Li
               </Contact.Item>
               <Contact.Item icon={<FaGithub />} href="https://github.com/CornWorld">
                 CornWorld
+              </Contact.Item>
+              <Contact.Item icon={<FaCode />} href="https://www.luogu.com.cn/user/225868" className = 'flex flex-row'>
+                Luogu CornWorld<HiBadgeCheck className='text-[#52c41a] m-auto ml-1' />
               </Contact.Item>
             </Contact.Root>
           </div>
@@ -52,10 +55,10 @@ function App() {
 
         <Section title="技术能力">
           <List>
-            <List.Item>熟悉 HTML / CSS / JS / TS 等前端开发语言</List.Item>
-            <List.Item>熟悉 TSX 语法与 React.js 框架，有使用 React Router 等社区生态的经验，尝试参与多个相关开源项目</List.Item>
-            <List.Item>了解 Golang Gin 与 PHP 作为后端的使用方法，尝试完成多个前后端结合程序</List.Item>
-            <List.Item>熟悉 Docker 等容器化技术，日常使用 Github Actions 等 CICD 产品</List.Item>
+            <List.Item>Github 6 年开源经验（900+ Commits 100+ Issues），熟悉各种场景下的 Git 用法</List.Item>
+            <List.Item>熟练使用 JS / Python / Lua / Bash 等脚本语言，编写过多个自动化脚本</List.Item>
+            <List.Item>熟悉 Nestjs / Nextjs / Expressjs 等 Web 框架，尝试参与多个相关全栈开源项目</List.Item>
+            <List.Item>熟悉 CICD 工作流，日常使用 Github Actions 等产品辅助开源项目</List.Item>
           </List>
         </Section>
 
@@ -186,14 +189,14 @@ function App() {
               </div>
             </Section>
 
-            <Section title="教育经历">
+            {/* <Section title="教育经历">
               <Event
                 title="本科 数据科学与大数据技术"
                 organization="某公办二本学院"
                 date="2023.9 - 2027.9"
                 location="在读，全日制"
               />
-            </Section>
+            </Section> */}
           </div>
         </div>
       </div>

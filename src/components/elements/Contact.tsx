@@ -4,6 +4,7 @@ interface ContactProps {
   icon: React.ReactNode;
   href?: string;
   children: React.ReactNode;
+  className?: string;
 }
 
 interface ContactsProps {
@@ -11,13 +12,13 @@ interface ContactsProps {
   className?: string;
 }
 
-const Contact: React.FC<ContactProps> = ({ icon, href, children }) => {
+const Contact: React.FC<ContactProps> = ({ icon, href, children, className }) => {
   const content = (
     <div className='flex items-center gap-1'>
       <span className="w-3 h-3 flex items-center justify-center text-[var(--color-cv-accent)]">
         {icon}
       </span>
-      <span>{children}</span>
+      <span className={className}>{children}</span>
     </div>
   );
 
