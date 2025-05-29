@@ -8,7 +8,7 @@ import Divider from './components/elements/Divider';
 import ThemeProvider from './theme/ThemeProvider';
 import Typography from './components/elements/Typography';
 import Contact from './components/elements/Contact';
-import { FaTrophy, FaEnvelope, FaPhone, FaGithub, FaHome, FaLink } from 'react-icons/fa';
+import { FaTrophy, FaEnvelope, FaPhone, FaGithub, FaHome } from 'react-icons/fa';
 import { RiWechatFill } from "react-icons/ri";
 import './App.css';
 
@@ -23,22 +23,23 @@ function App() {
             </Typography>
             
             <Typography variant="tagline" className="mb-1">
-              前端开发工程师
+              全栈开发工程师
             </Typography>
 
             <Contact.Root>
               <Contact.Item icon={<FaEnvelope />} href="mailto:job@corn.im">
                 job@corn.im
               </Contact.Item>
-              <Contact.Item icon={<FaPhone />}>
+              {/* <Contact.Item icon={<FaPhone />}>
                 +86 XXX-XXXX-3800
+              </Contact.Item> */}
+              <Contact.Item icon={<FaGithub />} href="https://github.com/CornWorld">
+                CornWorld
               </Contact.Item>
               <Contact.Item icon={<FaHome />} href="https://corn.li">
                 Corn.Li
               </Contact.Item>
-              <Contact.Item icon={<FaGithub />} href="https://github.com/CornWorld">
-                CornWorld
-              </Contact.Item>
+              
             </Contact.Root>
           </div>
           <div className="flex-shrink-0">
@@ -52,10 +53,11 @@ function App() {
 
         <Section title="技术能力">
           <List>
-            <List.Item>熟悉 HTML / CSS / JS / TS 等前端开发语言</List.Item>
-            <List.Item>熟悉 TSX 语法与 React.js 框架，有使用 React Router 等社区生态的经验，尝试参与多个相关开源项目</List.Item>
-            <List.Item>了解 Golang Gin 与 PHP 作为后端的使用方法，尝试完成多个前后端结合程序</List.Item>
-            <List.Item>熟悉 Docker 等容器化技术，日常使用 Github Actions 等 CICD 产品</List.Item>
+            <List.Item>熟悉 HTML / CSS / JS / TS 等前端开发语言；熟悉 TSX / Nestjs / Nextjs / Expressjs 框架/生态，尝试参与多个相关开源项目</List.Item>
+            <List.Item>简单学习 OS 内核相关公开课，独立完成 MIT6.S081 (xv6-labs)</List.Item>
+            <List.Item>熟练使用 Docker 等容器化技术，曾接触过 K3s / Rancher 等容器编排生态</List.Item>
+            <List.Item>Minecraft 10 年玩家，常年游玩 Java 版(1.6-)，涉及模组生存 / 起床战争等玩法</List.Item>
+            <List.Item>4 年使用 MCSM 经验，高版本 Forge 服 <a href='https://lsc.ungine.cn/'>文明之海 (lsc.ungine.cn)</a> 服主</List.Item>
           </List>
         </Section>
 
@@ -183,6 +185,7 @@ function App() {
                 <Tag>Bootstrap</Tag>
                 <Tag>Semantic</Tag>
                 <Tag>Tailwind</Tag>
+                <Tag>MCer</Tag>
               </div>
             </Section>
 
