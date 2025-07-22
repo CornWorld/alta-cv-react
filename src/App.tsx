@@ -1,4 +1,3 @@
-import React from 'react';
 import Section from './components/layout/Section';
 import Event from './components/elements/Event';
 import Achievement from './components/elements/Achievement';
@@ -8,7 +7,7 @@ import Divider from './components/elements/Divider';
 import ThemeProvider from './theme/ThemeProvider';
 import Typography from './components/elements/Typography';
 import Contact from './components/elements/Contact';
-import { FaTrophy, FaEnvelope, FaPhone, FaGithub, FaHome, FaLink } from 'react-icons/fa';
+import { FaTrophy, FaEnvelope, FaPhone, FaGithub, FaHome } from 'react-icons/fa';
 import { RiWechatFill } from "react-icons/ri";
 import './App.css';
 
