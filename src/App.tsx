@@ -69,9 +69,9 @@ function App() {
                 location='广州，电商产品部'
               >
                 <List>
-                  <List.Item>完成 C 端群送礼场景中的 10+ 状态交易投诉流程页面</List.Item>
-                  <List.Item>使用 Nest.js 为内部工单系统添加 LLM 客诉分析板块</List.Item>
-                  <List.Item>基于 Babel 收集调用 Node.js 代码片上下文， 基于 LLM 能力生成可用的 Jest.js 单元测试，自动测试并评审更改代码</List.Item>
+                  <List.Item>完成多状态交易投诉流程页面，入口位于微信小店-订单详情页</List.Item>
+                  <List.Item>独立跟进价格评估小程序迭代开发，提供移动端类 BI 前端功能</List.Item>
+                  <List.Item>基于 Babel 收集调用 Node.js 代码片上下文， 基于 Dify 生成可用的 Jest.js 单元测试，自动测试并评审更改代码</List.Item>
                 </List>
               </Event>
 
