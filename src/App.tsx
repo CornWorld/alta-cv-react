@@ -58,9 +58,9 @@ function App() {
           </List>
         </Section>
 
-        <div className="cv-columns columns-2">
-          <div className="w-3/5">
-          <Section title="实习经历">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-[var(--cv-column-gap)]">
+          <div className="md:col-span-3">
+            <Section title="实习经历">
               <Event
                 title="腾讯 WXG 微信小店 前端开发"
                 organization="电商治理方向"
@@ -74,7 +74,6 @@ function App() {
                   <List.Item>基于 Babel 收集调用 Node.js 代码片上下文， 基于 Dify 生成可用的 Jest.js 单元测试，自动测试并评审更改代码</List.Item>
                 </List>
               </Event>
-
             </Section>
             <Section title="项目一览">
               <Event
@@ -147,7 +146,7 @@ function App() {
             </Section>
           </div>
 
-          <div className="w-2/5 space-y-4">
+          <div className="md:col-span-2 space-y-4">
             <Section title="奖项">
               <Achievement
                 icon={FaTrophy}

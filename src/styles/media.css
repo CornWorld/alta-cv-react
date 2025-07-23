@@ -10,16 +10,19 @@
 
   :root {
     --margin: 2rem;
-    margin: calc(var(--margin) * 0.618) var(--margin);
 
     --font-size-base: calc(9pt);
-    --web-page-margin: 0;
+    --web-page-margin: calc(var(--margin) * 0.618) var(--margin);
     --cv-content-padding-x: 0;
   }
 }
 
 /* Responsive styles */
 @media (max-width: 768px) {
+  :root {
+    --web-page-margin: 2rem 0;
+  }
+
   .cv-container {
     @apply flex flex-col;
   }
