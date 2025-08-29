@@ -62,10 +62,18 @@
 
   .cv-item-content {
     @apply flex-grow;
+    /* 回退到更保守的换行策略，避免提前换行导致 A4 超页与过多空白 */
+    overflow-wrap: normal;
+    word-break: normal;
+    line-break: auto;
+    hyphens: manual;
   }
 
   .cv-item-link {
-    @apply text-[var(--color-cv-accent)] hover:underline;
+    /* 仅对链接保留更激进的断行以防 URL 溢出 */
+    overflow-wrap: anywhere;
+    word-break: break-all;
+    hyphens: auto;
   }
 
   .cv-event {
@@ -132,4 +140,4 @@
     @apply absolute right-full mr-4 text-right;
     width: calc(var(--cv-column-gap) * 2);
   }
-} 
+}
