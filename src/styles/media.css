@@ -17,6 +17,19 @@
   }
 }
 
+/* 屏幕 A4 模式：命令行开关 VITE_A4=1 时启用（与打印保持一致变量） */
+:root[data-a4="1"] {
+  --margin: 2rem;
+  --font-size-base: calc(11pt);
+  --web-page-margin: calc(var(--margin) * 0.618) var(--margin);
+  --cv-content-padding-x: 0.5rem;
+  /* A4 纸张屏幕预览尺寸与页边距（纸感） */
+  --a4-width: 210mm;
+  --a4-height: 297mm;
+  --a4-margin: 12mm; /* 屏幕阅读略大一点的内边距 */
+  --a4-content-height: calc(var(--a4-height) - 2 * var(--a4-margin));
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
   :root {
@@ -35,4 +48,109 @@
   .cv-section-columns {
     @apply flex flex-col;
   }
-} 
+}
+
+/* 确保打印优先：当 data-a4 开启时，打印介质仍以打印变量为准（避免控制台切换覆盖打印） */
+@media print {
+  :root[data-a4="1"] {
+    --margin: 2rem;
+    --font-size-base: calc(9pt);
+    --web-page-margin: calc(var(--margin) * 0.618) var(--margin);
+    --cv-content-padding-x: 0;
+  }
+}
+
+/* 屏幕 A4 纸感容器：固定版心、阴影、分页分隔线（不影响打印） */
+:root[data-a4="1"] .cv-container {
+  width: var(--a4-width);
+  min-height: var(--a4-height);
+  margin: 1rem auto;
+  padding: var(--a4-margin);
+  /* 两层背景：第一层是分隔线（仅内容区），第二层是白色纸张（覆盖到内边距） */
+  background:
+    /* 主要分页线：每整页边界 1px 深色线 */
+    repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent calc(var(--a4-content-height) - 1px),
+      rgba(0,0,0,0.08) calc(var(--a4-content-height) - 1px),
+      rgba(0,0,0,0.08) calc(var(--a4-content-height) + 1px)
+    ),
+    /* 额外分割线：半页处更浅更细的参考线 */
+    repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent calc(calc(var(--a4-content-height) / 2) - 0.5px),
+      rgba(0,0,0,0.05) calc(calc(var(--a4-content-height) / 2) - 0.5px),
+      rgba(0,0,0,0.05) calc(calc(var(--a4-content-height) / 2) + 0.5px)
+    ),
+    #fff;
+  background-size: 100% var(--a4-content-height), 100% var(--a4-content-height), auto;
+  background-origin: content-box, content-box, border-box;
+  background-clip: content-box, content-box, border-box;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.18);
+  border-radius: 2px;
+}
+
+/* A4 模式下给页面一个浅灰背景，突出纸张 */
+:root[data-a4="1"] body {
+  background: #f1f5f9;
+}
+
+/* 打印时移除纸感效果，避免影响输出（即使 data-a4=1） */
+@media print {
+  .cv-container {
+    box-shadow: none !important;
+    background: transparent !important;
+    background-image: none !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+/* 分页模式：当启用 data-a4-paged=1 时，使用独立 page 容器渲染纸张 */
+:root[data-a4="1"][data-a4-paged="1"] .cv-container {
+  width: auto;
+  min-height: auto;
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+:root[data-a4="1"][data-a4-paged="1"] .a4-pages {
+  display: grid;
+  gap: 1rem;
+  justify-content: center;
+}
+
+:root[data-a4="1"][data-a4-paged="1"] .a4-page {
+  width: var(--a4-width);
+  height: var(--a4-height);
+  padding: var(--a4-margin);
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.18);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+:root[data-a4="1"][data-a4-paged="1"] .a4-page-content {
+  height: var(--a4-content-height);
+  overflow: hidden;
+}
+
+@media print {
+  /* 打印时移除分页容器的装饰与限制，恢复内容自然流动 */
+  .a4-page {
+    box-shadow: none !important;
+    background: transparent !important;
+    width: auto !important;
+    height: auto !important;
+    padding: 0 !important;
+  }
+  .a4-page-content {
+    height: auto !important;
+    overflow: visible !important;
+  }
+}

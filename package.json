@@ -4,9 +4,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:a4": "VITE_A4=1 vite",
     "build": "tsc -b && vite build",
+    "build:a4": "VITE_A4=1 tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preview:a4": "VITE_A4=1 vite preview"
   },
   "dependencies": {
     "react": "^19.1.0",
