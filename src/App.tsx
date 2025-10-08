@@ -63,7 +63,7 @@ function App() {
             <Section title="实习经历">
               <Event
                 title="腾讯 WXG 微信小店 前端开发"
-                organization="电商治理方向"
+                organization="电商治理/电商基建方向"
                 icon={<RiWechatFill className='text-[#1AAD19] text-2xl'/>}
                 date="2025.3 - 至今"
                 location='广州，电商产品部'
@@ -187,7 +187,7 @@ function App() {
             <Section title="教育经历">
               <Event
                 title="本科 数据科学与大数据技术"
-                organization="某公办二本学院"
+                organization="门头沟学院（匿名）"
                 date="2023.9 - 2027.9"
                 location="在读，全日制"
               />
