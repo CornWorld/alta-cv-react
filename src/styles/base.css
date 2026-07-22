@@ -1,17 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Lato:wght@400;700&display=swap');
 @import "tailwindcss";
 
 @theme {
   /* Base Colors - These can be overridden by themes */
-  --color-cv-accent: #8F0D0D;      /* PastelRed - Default theme accent */
-  --color-cv-emphasis: #2E2E2E;    /* SlateGrey - For emphasized text */
-  --color-cv-heading: #450808;     /* DarkPastelRed - Section headings */
-  --color-cv-heading-rule: #E7D192; /* GoldenEarth - Section divider */
-  --color-cv-subheading: #000000;  /* PastelRed - Subsection headings */
-  --color-cv-body: #666666;        /* LightGrey - Main text color */
-  --color-cv-name: #000000;        /* Black - For name in header */
-  --color-cv-tagline: #8F0D0D;     /* PastelRed - For tagline in header */
-  --color-cv-icon: #8F0D0D;        /* PastelRed - For icons */
+  --color-cv-accent: #8f0d0d; /* PastelRed - Default theme accent */
+  --color-cv-emphasis: #2e2e2e; /* SlateGrey - For emphasized text */
+  --color-cv-heading: #450808; /* DarkPastelRed - Section headings */
+  --color-cv-heading-rule: #e7d192; /* GoldenEarth - Section divider */
+  --color-cv-subheading: #000000; /* PastelRed - Subsection headings */
+  --color-cv-body: #666666; /* LightGrey - Main text color */
+  --color-cv-name: #000000; /* Black - For name in header */
+  --color-cv-tagline: #8f0d0d; /* PastelRed - For tagline in header */
+  --color-cv-icon: #8f0d0d; /* PastelRed - For icons */
 
   /* Web/Page Layout */
   --web-page-max-width: 100%;
@@ -27,9 +26,9 @@
   --cv-section-rule-height: 0.25rem;
 
   /* Typography */
-  --font-family-sans: 'Jetbrains Mono','Lato', sans-serif;
-  --font-family-serif: 'Roboto Slab', serif;
-  
+  --font-family-sans: "Jetbrains Mono", "Lato", sans-serif;
+  --font-family-serif: "Roboto Slab", serif;
+
   --font-size-base: calc(16px);
 }
 
@@ -43,7 +42,12 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-family-serif);
     font-weight: bold;
     color: var(--color-cv-heading);

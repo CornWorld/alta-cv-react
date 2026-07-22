@@ -1,11 +1,11 @@
-import React from 'react';
-import { useTheme } from '../theme/ThemeProvider';
+import React from "react";
+import { useTheme } from "../theme/useTheme";
 
 export const ThemeToggle: React.FC = () => {
   const { currentTheme, setTheme } = useTheme();
 
   const toggleTheme = () => {
-    setTheme(currentTheme === 'default' ? 'dark' : 'default');
+    setTheme(currentTheme === "default" ? "dark" : "default");
   };
 
   return (
@@ -13,9 +13,9 @@ export const ThemeToggle: React.FC = () => {
       onClick={toggleTheme}
       className="px-4 py-2 rounded-md bg-[var(--color-cv-accent)] text-white"
     >
-      Switch to {currentTheme === 'default' ? 'Dark' : 'Light'} Theme
+      Switch to {currentTheme === "default" ? "Dark" : "Light"} Theme
     </button>
   );
 };
 
-export default ThemeToggle; 
+export default ThemeToggle;

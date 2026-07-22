@@ -1,7 +1,6 @@
-import React from 'react';
-import Typography from './Typography';
-import { FaCalendar, FaMapMarkerAlt } from 'react-icons/fa';
-import type { IconType } from 'react-icons';
+import React from "react";
+import Typography from "./Typography";
+import { FaCalendar, FaMapMarkerAlt } from "react-icons/fa";
 
 interface EventProps {
   title: string;
@@ -10,7 +9,7 @@ interface EventProps {
   location?: string;
   children?: React.ReactNode;
   className?: string;
-  icon?: IconType | React.ReactNode;
+  icon?: React.ReactNode;
 }
 
 const Event: React.FC<EventProps> = ({
@@ -19,18 +18,14 @@ const Event: React.FC<EventProps> = ({
   date,
   location,
   children,
-  className = '',
-  icon
+  className = "",
+  icon,
 }) => {
   return (
     <div className={`mb-[var(--cv-item-spacing-y)] ${className}`}>
       <div>
-        <Typography variant="subsection" className={icon?'flex gap-2':''}>
-          {icon && (
-            <div className='text-base my-auto w-6'>
-              {React.isValidElement(icon) ? icon : React.createElement(icon as IconType)}
-            </div>
-          )}
+        <Typography variant="subsection" className={icon ? "flex gap-2" : ""}>
+          {icon && <div className="text-base my-auto w-6">{icon}</div>}
           {title}
         </Typography>
         {organization && (
@@ -53,13 +48,9 @@ const Event: React.FC<EventProps> = ({
           )}
         </div>
       </div>
-      {children && (
-        <div className="mt-3">
-          {children}
-        </div>
-      )}
+      {children && <div className="mt-3">{children}</div>}
     </div>
   );
 };
 
-export default Event; 
+export default Event;

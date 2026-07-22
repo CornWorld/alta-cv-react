@@ -1,7 +1,11 @@
 /* Components */
 @layer components {
   .cv-container {
-    @apply max-w-[var(--web-page-max-width)] mx-auto px-[var(--cv-content-padding-x)];
+    max-width: var(--web-page-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--cv-content-padding-x);
+    padding-right: var(--cv-content-padding-x);
     min-height: auto;
     display: flex;
     flex-direction: column;
@@ -9,15 +13,22 @@
   }
 
   .cv-columns {
-    @apply flex gap-[var(--cv-column-gap)];
+    display: flex;
+    gap: var(--cv-column-gap);
   }
 
   .cv-section {
-    @apply mb-[var(--cv-section-spacing-y)];
+    margin-bottom: var(--cv-section-spacing-y);
   }
 
   .cv-section-title {
-    @apply font-serif font-bold text-[var(--color-cv-heading)] text-xl mb-2 relative;
+    font-family: var(--font-family-serif);
+    font-weight: bold;
+    color: var(--color-cv-heading);
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    margin-bottom: 0.5rem;
+    position: relative;
   }
 
   .cv-section-rule {
@@ -32,15 +43,22 @@
 
   /* ItemList and Item styles */
   .cv-item-list {
-    @apply flex flex-col gap-1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
   }
 
   .cv-item {
-    @apply flex items-baseline gap-2;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
   }
 
   .cv-item-marker {
-    @apply text-[var(--color-cv-accent)] my-auto w-3;
+    color: var(--color-cv-accent);
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 0.75rem;
   }
 
   /* 用 ::before 渲染文本 marker */
@@ -57,11 +75,11 @@
   /* 如果 marker 是 ReactNode（如图标），隐藏 ::before */
   .cv-item .cv-item-marker + .cv-item-content {
     margin-left: 0;
-    @apply ml-3;
+    margin-left: 0.75rem;
   }
 
   .cv-item-content {
-    @apply flex-grow;
+    flex-grow: 1;
     /* 回退到更保守的换行策略，避免提前换行导致 A4 超页与过多空白 */
     overflow-wrap: normal;
     word-break: normal;
@@ -77,56 +95,90 @@
   }
 
   .cv-event {
-    @apply mb-[var(--cv-item-spacing-y)];
+    margin-bottom: var(--cv-item-spacing-y);
   }
 
   .cv-event-header {
-    @apply flex flex-wrap items-baseline justify-between gap-2 mb-2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 
   .cv-event-title {
-    @apply text-[var(--color-cv-emphasis)] font-bold;
+    color: var(--color-cv-emphasis);
+    font-weight: bold;
   }
 
   .cv-event-organization {
-    @apply text-[var(--color-cv-accent)];
+    color: var(--color-cv-accent);
   }
 
   .cv-event-meta {
-    @apply flex items-center gap-2 text-[var(--color-cv-body)];
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-cv-body);
   }
 
   .cv-achievement {
-    @apply flex items-start gap-4 mb-4;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
   }
 
   .cv-achievement-icon {
-    @apply text-[var(--color-cv-icon)] text-xl flex-shrink-0;
+    color: var(--color-cv-icon);
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    flex-shrink: 0;
   }
 
   .cv-tag {
-    @apply inline-flex items-center px-2 py-1 rounded-md bg-[color-mix(in_oklch,var(--color-cv-accent),transparent_90%)] text-[var(--color-cv-accent)] mr-2 mb-2;
+    display: inline-flex;
+    align-items: center;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    border-radius: 0.375rem;
+    background: color-mix(in oklch, var(--color-cv-accent), transparent 90%);
+    color: var(--color-cv-accent);
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 
   .cv-skills-grid {
-    @apply grid grid-cols-2 gap-[var(--cv-skill-gap)];
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--cv-skill-gap);
   }
 
   .cv-contact-info {
-    @apply flex flex-wrap gap-4;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
   .cv-contact-item {
-    @apply flex items-center gap-2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .cv-contact-icon {
-    @apply text-[var(--color-cv-icon)];
+    color: var(--color-cv-icon);
   }
 
   .cv-divider {
-    @apply w-full my-[var(--cv-item-spacing-y)];
-    background-image: linear-gradient(90deg, 
+    width: 100%;
+    margin-top: var(--cv-item-spacing-y);
+    margin-bottom: var(--cv-item-spacing-y);
+    background-image: linear-gradient(
+      90deg,
       color-mix(in oklch, var(--color-cv-body), transparent 70%) 50%,
       transparent 50%
     );
@@ -137,7 +189,10 @@
   }
 
   .cv-section-sidebar {
-    @apply absolute right-full mr-4 text-right;
+    position: absolute;
+    right: 100%;
+    margin-right: 1rem;
+    text-align: right;
     width: calc(var(--cv-column-gap) * 2);
   }
 }

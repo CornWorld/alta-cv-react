@@ -1,24 +1,12 @@
-import React, { createContext, useContext, useEffect } from 'react';
+import React, { useEffect } from "react";
 
 // Import base styles
-import '../styles/base.css';
+import "../styles/base.css";
 
 // Import all theme styles
-import '../styles/themes/dark.css';
+import "../styles/themes/dark.css";
 
-type ThemeName = 'default' | 'dark';
-
-interface ThemeContextType {
-  currentTheme: ThemeName;
-  setTheme: (theme: ThemeName) => void;
-}
-
-const ThemeContext = createContext<ThemeContextType>({
-  currentTheme: 'default',
-  setTheme: () => {},
-});
-
-export const useTheme = () => useContext(ThemeContext);
+import { ThemeContext, type ThemeName } from "./useTheme";
 
 interface ThemeProviderProps {
   initialTheme?: ThemeName;
@@ -26,13 +14,14 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({
-  initialTheme = 'default',
-  children
+  initialTheme = "default",
+  children,
 }) => {
-  const [currentTheme, setCurrentTheme] = React.useState<ThemeName>(initialTheme);
+  const [currentTheme, setCurrentTheme] =
+    React.useState<ThemeName>(initialTheme);
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', currentTheme);
+    document.documentElement.setAttribute("data-theme", currentTheme);
   }, [currentTheme]);
 
   const setTheme = (theme: ThemeName) => {
@@ -46,4 +35,4 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   );
 };
 
-export default ThemeProvider; 
+export default ThemeProvider;

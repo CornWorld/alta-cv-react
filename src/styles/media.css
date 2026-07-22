@@ -4,8 +4,10 @@
     size: A4;
   }
 
-  nav, button, .no-print {
-    @apply hidden;
+  nav,
+  button,
+  .no-print {
+    display: none;
   }
 
   :root {
@@ -37,16 +39,18 @@
   }
 
   .cv-container {
-    @apply flex flex-col;
+    display: flex;
+    flex-direction: column;
   }
 
   .cv-main-column,
   .cv-side-column {
-    @apply w-full;
+    width: 100%;
   }
 
   .cv-section-columns {
-    @apply flex flex-col;
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -68,27 +72,27 @@
   padding: var(--a4-margin);
   /* 两层背景：第一层是分隔线（仅内容区），第二层是白色纸张（覆盖到内边距） */
   background:
-    /* 主要分页线：每整页边界 1px 深色线 */
-    repeating-linear-gradient(
+    /* 主要分页线：每整页边界 1px 深色线 */ repeating-linear-gradient(
       to bottom,
       transparent,
       transparent calc(var(--a4-content-height) - 1px),
-      rgba(0,0,0,0.08) calc(var(--a4-content-height) - 1px),
-      rgba(0,0,0,0.08) calc(var(--a4-content-height) + 1px)
+      rgba(0, 0, 0, 0.08) calc(var(--a4-content-height) - 1px),
+      rgba(0, 0, 0, 0.08) calc(var(--a4-content-height) + 1px)
     ),
     /* 额外分割线：半页处更浅更细的参考线 */
-    repeating-linear-gradient(
-      to bottom,
-      transparent,
-      transparent calc(calc(var(--a4-content-height) / 2) - 0.5px),
-      rgba(0,0,0,0.05) calc(calc(var(--a4-content-height) / 2) - 0.5px),
-      rgba(0,0,0,0.05) calc(calc(var(--a4-content-height) / 2) + 0.5px)
-    ),
+      repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent calc(calc(var(--a4-content-height) / 2) - 0.5px),
+        rgba(0, 0, 0, 0.05) calc(calc(var(--a4-content-height) / 2) - 0.5px),
+        rgba(0, 0, 0, 0.05) calc(calc(var(--a4-content-height) / 2) + 0.5px)
+      ),
     #fff;
-  background-size: 100% var(--a4-content-height), 100% var(--a4-content-height), auto;
+  background-size: 100% var(--a4-content-height), 100% var(--a4-content-height),
+    auto;
   background-origin: content-box, content-box, border-box;
   background-clip: content-box, content-box, border-box;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.18);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.18);
   border-radius: 2px;
 }
 
@@ -130,7 +134,7 @@
   height: var(--a4-height);
   padding: var(--a4-margin);
   background: #fff;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.18);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.18);
   border-radius: 2px;
   overflow: hidden;
 }
