@@ -49,6 +49,8 @@ function App() {
           </div>
         </div>
 
+{/* 板块定位, 通过关键词满足 JD, 方便过 AI 简历筛选 / HR 人工简历筛选 */}
+{/* TODO: 在有实习的情况下, 可以往下面放放 */}
         <Section title="技术能力">
           <List>
             <List.Item>熟悉 HTML / CSS / JS / TS 等前端开发语言</List.Item>
@@ -58,6 +60,7 @@ function App() {
           </List>
         </Section>
 
+{/* 最起码要 = 2 个项目的篇幅 */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-[var(--cv-column-gap)]">
           <div className="md:col-span-3">
             <Section title="实习经历">
@@ -93,6 +96,7 @@ function App() {
 
               <Divider />
 
+{/* 加一下 cornworld/vanblog , 但 star 略少不太好说 */}
               <Event
                 title="VanBlog 全栈个人博客系统"
                 organization="主要维护者"
