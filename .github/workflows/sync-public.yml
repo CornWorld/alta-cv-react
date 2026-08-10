@@ -15,4 +15,5 @@ jobs:
         env:
           PAT: ${{ secrets.PUBLIC_REPO_PAT }}
         run: |
+          git config --local --unset-all http.https://github.com/.extraheader
           git push https://x-access-token:${PAT}@github.com/CornWorld/alta-cv-react.git main
