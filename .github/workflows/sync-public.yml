@@ -1,0 +1,18 @@
+name: Sync main to public mirror
+on:
+  push:
+    branches: [main]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push main to public mirror
+        env:
+          PAT: ${{ secrets.PUBLIC_REPO_PAT }}
+        run: |
+          git push https://x-access-token:${PAT}@github.com/CornWorld/alta-cv-react.git main
