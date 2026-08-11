@@ -1,0 +1,8 @@
+name = "cv-proxy"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+# Route: all subdomains of cv.corn.im → Worker
+routes = [
+  { pattern = "*.cv.corn.im/*", zone_name = "corn.im" }
+]

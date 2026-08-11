@@ -1,0 +1,11 @@
+{
+  "scripts/add-branch-domain.sh": [
+    {
+      "id": "notebook-1786410924029_qu4cq6moh",
+      "filePath": "scripts/add-branch-domain.sh",
+      "note": "CF Pages 分支自定义域名核心机制: ① POST /pages/projects/{proj}/domains 注册域名,此时 CNAME 必须指向项目根 pages.dev 才能通过验证; ② 轮询域名 status=active; ③ PATCH DNS CNAME 目标改成分支别名 pages.dev({branch}.{project}.pages.dev)。顺序不能反,直接指分支 pages.dev 会验证失败(pending/CNAME not set)。分支别名规则 = 小写 + 非字母数字转-。",
+      "createdAt": "2026-08-11T09:15:24.029",
+      "updatedAt": "2026-08-11T09:15:24.029"
+    }
+  ]
+}

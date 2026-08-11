@@ -7,11 +7,13 @@
 **研究结论**:
 
 1. **"一个 branch 一个 URL" 是 CF Pages 原生能力,无需自建路由。**
+
    - push 到非 `main` 分支 → 唯一预览 URL:`<hash>.cv.pages.dev`(随机 hex)
    - 稳定别名:`<branch>.cv.pages.dev`(如 `frontend-ver.cv.pages.dev`)
    - `main` → 生产 `cv.pages.dev`。预览带 `noindex`,不污染 SEO。
 
 2. **使用 CF Git Integration 而非 GitHub Actions** —— 更简单:
+
    - CF 通过 GitHub App 直连 private repo,`push` 即自动构建部署,**零 Token 零 Action 零代码**。
    - 支持 private repo + pnpm(自动检测 `pnpm-lock.yaml`)。
    - 构建在 CF 服务器上进行,与 `wrangler pages deploy` 输出一致。
@@ -66,7 +68,7 @@
 
 ### Phase 2:CF Pages Git Integration 连接 private repo
 
-- **Goal**:CF 直连 private repo,每次 push 自动构建并部署,main→生产,其他→预览 URL。
+- **Goal**:CF 直连 private repo,每次 push 自动构建并部署,main→ 生产,其他 → 预览 URL。
 - **说明**:这个 Phase 大部分在 CF Dashboard 操作,无需写代码。
 - **Steps**:
   - [ ] **2.1** 登录 CF Dashboard → Workers & Pages → 进入项目 `cv` → Settings → Git Integration。
@@ -96,6 +98,7 @@
 - **Done when**:push main 到 private → public main 自动同步;public repo 无任何 workflow;CF 只从 private repo 构建。
 
 **sync-public.yml**(整个项目唯一的 Workflow):
+
 ```yaml
 name: Sync main to public mirror
 on:
@@ -119,23 +122,23 @@ jobs:
 
 ## 总结:极简方案
 
-| 组件 | 方案 | Secret 数量 |
-|------|------|------------|
-| 分支部署(全分支 → URL) | CF Git Integration | 0 |
-| main → public 镜像同步 | GitHub Action | 1 (PUBLIC_REPO_PAT) |
-| **总计** | | **1** |
+| 组件                   | 方案               | Secret 数量         |
+| ---------------------- | ------------------ | ------------------- |
+| 分支部署(全分支 → URL) | CF Git Integration | 0                   |
+| main → public 镜像同步 | GitHub Action      | 1 (PUBLIC_REPO_PAT) |
+| **总计**               |                    | **1**               |
 
 没有 deploy.yml,没有 CLUDFLARE_API_TOKEN,没有 CLOUDFLARE_ACCOUNT_ID。三个 Phase 下来,private repo 里只有一个 `sync-public.yml`。
 
 ## Risks & Mitigations
 
-| 风险 | 影响 | 缓解 |
-|------|------|------|
-| CF Git Integration pnpm 检测失败 | 构建失败 | `.nvmrc` 指定 Node 版本;CF 支持 `pnpm-lock.yaml` 自动切换 |
-| 双仓库 main 分叉 | 镜像不一致 | sync fast-forward 确保线性;public 设分支保护 |
-| ospp-* 分支触发 CF 预览 | 无关内容部署 | 删除或排除 |
-| PAT 泄露 | public 被改写 | 细粒度 PAT,仅单仓库 Contents write |
-| public repo CF 集成残留 | public 也被构建 | Phase 2.5 断开,Phase 3.2 确认 |
+| 风险                             | 影响            | 缓解                                                      |
+| -------------------------------- | --------------- | --------------------------------------------------------- |
+| CF Git Integration pnpm 检测失败 | 构建失败        | `.nvmrc` 指定 Node 版本;CF 支持 `pnpm-lock.yaml` 自动切换 |
+| 双仓库 main 分叉                 | 镜像不一致      | sync fast-forward 确保线性;public 设分支保护              |
+| ospp-\* 分支触发 CF 预览         | 无关内容部署    | 删除或排除                                                |
+| PAT 泄露                         | public 被改写   | 细粒度 PAT,仅单仓库 Contents write                        |
+| public repo CF 集成残留          | public 也被构建 | Phase 2.5 断开,Phase 3.2 确认                             |
 
 ## Rollback Strategy
 
@@ -145,16 +148,26 @@ jobs:
 
 ## Completion Summary
 
-**Status**:(执行后填写)
-**Phases**: /3
+**Status**:Completed ✅
+**Phases**:3/3(+ 额外分支域名自动化)
 
 ### Results
-(执行后填写)
+
+- ✅ private 源码仓库 `CornWorld/alta-cv-react-private` + local origin 重配,public 为镜像
+- ✅ CF Git Integration 连 private repo,全分支自动构建(main→ 生产,其他 →`<hash>.cv-7mm.pages.dev` + `<branch>.cv-7mm.pages.dev`)
+- ✅ `sync-public.yml`:main 自动同步到 public 镜像(修复了 checkout extraheader 覆盖 PAT 的坑)
+- ✅ **分支自定义域名自动化**(探索成果):`branch-domain.yml` + `add-branch-domain.sh`,分支 push → 自动注册 `{branch}.cv.corn.im` → 等激活 → 改 CNAME 指向分支别名。已用 `vis-test`/`flow-test` 分支验证 title 正确。
+- ✅ public repo Actions 已禁用
 
 ### Deviations
-(执行后填写)
+
+- 最终采用 Git Integration + 分支域名脚本,而非最初的纯 Actions 部署
+- 关键机制:域名注册时 CNAME 必须先指项目根 pages.dev 验证激活,再改指分支别名 pages.dev(顺序不能反)
+- `ospp-mcsm`/`ospp-oiwiki` 分支未推入 private;`gh` 需绕 HTTPS 代理
+- 测试分支 `vis-test`、`flow-test` 已清理
 
 ### Verification
-- [ ] Phase 1:origin→private,public-mirror→旧 public;private repo 含所有分支
+
+- [ ] Phase 1:origin→private,public-mirror→ 旧 public;private repo 含所有分支
 - [ ] Phase 2:push main → cv.pages.dev;push 其他分支 → `<hash>.cv.pages.dev` + `<branch>.cv.pages.dev`
 - [ ] Phase 3:push main 到 private → public main 自动同步;public 无 workflow 无 CF 连接
