@@ -42,7 +42,7 @@ function App() {
           </div>
           <div className="flex-shrink-0">
             <img
-              src="/images/Globe_High.png"
+              src="./images/Globe_High.png"
               alt="CornWorld's photo"
               className="w-26 h-26 rounded-full object-cover border-[var(--color-cv-accent)]"
             />
