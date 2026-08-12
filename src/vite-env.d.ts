@@ -2,10 +2,10 @@
 
 /**
  * 构建期由 vite.config.ts 注入的 CF Pages 部署信息。
- * - hash：从 CF_PAGES_URL 提取的部署随机 hash（preview 分支有值，生产也可能有但被忽略）
+ * - sharePath：for/<id> 分支的分享路径（如 /for/tencent-wxg），非 for 分支为 null
  * - isProduction：CF_PAGES_BRANCH === "main"（生产构建）
  */
 declare const __CV_DEPLOY__: {
-  hash: string;
+  sharePath: string | null;
   isProduction: boolean;
 };
