@@ -10,11 +10,13 @@ import Contact from './components/elements/Contact';
 import { FaTrophy, FaEnvelope, FaPhone, FaGithub, FaHome } from 'react-icons/fa';
 import { RiWechatFill } from "react-icons/ri";
 import './App.css';
+import PrintUrl from './components/elements/PrintUrl';
 
 function App() {
   return (
     <ThemeProvider>
       <div className="cv-container">
+        <PrintUrl />
         <div className="flex justify-between items-start gap-8 mb-4">
           <div className="flex-grow">
             <Typography variant="name" className='mb-1'>

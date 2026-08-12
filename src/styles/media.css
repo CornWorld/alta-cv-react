@@ -158,3 +158,22 @@
     overflow: visible !important;
   }
 }
+
+/* 打印右上角：线上预览链接（构建期由 CF_PAGES_URL 推导，仅打印时显示） */
+.cv-print-url {
+  display: none;
+}
+
+@media print {
+  .cv-print-url {
+    display: inline-block;
+    position: fixed;
+    top: 0.25rem;
+    right: 0.5rem;
+    font-size: 8pt;
+    line-height: 1;
+    color: var(--color-cv-body);
+    text-decoration: none;
+    z-index: 10;
+  }
+}
