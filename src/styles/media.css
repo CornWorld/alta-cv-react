@@ -1,7 +1,10 @@
 /* Print styles */
 @media print {
+  /* 打印内容区宽度固定为 A4 210mm − 2×12mm = 186mm，与屏幕 A4 模式(--a4-margin:12mm)一致，
+     避免列宽随浏览器默认打印边距漂移 */
   @page {
     size: A4;
+    margin: 12mm;
   }
 
   nav,
@@ -22,14 +25,29 @@
 /* 屏幕 A4 模式：命令行开关 VITE_A4=1 时启用（与打印保持一致变量） */
 :root[data-a4="1"] {
   --margin: 2rem;
-  --font-size-base: calc(11pt);
+  /* 与打印 @media print 的字号保持一致(9pt)，使 rem 间隙/间距/字号同源，
+     保证 A4 屏幕预览与真实打印逐像素对齐 */
+  --font-size-base: calc(9pt);
   --web-page-margin: calc(var(--margin) * 0.618) var(--margin);
   --cv-content-padding-x: 0.5rem;
   /* A4 纸张屏幕预览尺寸与页边距（纸感） */
   --a4-width: 210mm;
   --a4-height: 297mm;
-  --a4-margin: 12mm; /* 屏幕阅读略大一点的内边距 */
-  --a4-content-height: calc(var(--a4-height) - 2 * var(--a4-margin));
+  /* 边距支持 CSS margin 简写：1/2/3/4 值由 src/a4Margin.ts 解析后写入这四个变量，
+     默认 12mm 与打印 @page margin 回退一致，保证 A4 预览与打印内容区等宽 */
+  --a4-margin-top: 8mm;
+  --a4-margin-right: 12mm;
+  --a4-margin-bottom: 8mm;
+  --a4-margin-left: 12mm;
+  /* 组合简写：供 padding 等需要四值边距的场合直接使用 */
+  --a4-margin: var(--a4-margin-top) var(--a4-margin-right)
+    var(--a4-margin-bottom) var(--a4-margin-left);
+  --a4-content-height: calc(
+    var(--a4-height) - var(--a4-margin-top) - var(--a4-margin-bottom)
+  );
+  --a4-content-width: calc(
+    var(--a4-width) - var(--a4-margin-left) - var(--a4-margin-right)
+  );
 }
 
 /* Responsive styles */
@@ -51,6 +69,29 @@
   .cv-section-columns {
     display: flex;
     flex-direction: column;
+  }
+}
+
+/* 双栏布局：基于容器内容宽度（而非视口宽度）判断。
+   系统打印的可打印区宽度与屏幕 A4 的内容区宽度一致（A4 210mm − 左右边距，
+   默认 12mm×2 ≈ 703px），因此两种预览同判，避免割裂。
+   注意：内容宽度由 --a4-content-width（width 减去左右边距）决定，随自定义边距缩放。 */
+.cv-layout-grid {
+  grid-template-columns: repeat(1, minmax(0, 1fr)); /* 默认单栏 */
+}
+@container (min-width: 640px) {
+  .cv-layout-grid {
+    /* 主栏 = ratio ×(内容宽 − 间隙)，副栏 = (1 − ratio)×(内容宽 − 间隙)；
+       与 ratio fr (1-ratio) fr 等价，但用 calc(百分比) 避免 var/calc 拼接 fr 单位的解析坑 */
+    grid-template-columns:
+      calc(var(--cv-column-ratio) * (100% - var(--cv-column-gap)))
+      calc((1 - var(--cv-column-ratio)) * (100% - var(--cv-column-gap)));
+  }
+  .cv-layout-main {
+    grid-column: 1;
+  }
+  .cv-layout-side {
+    grid-column: 2;
   }
 }
 

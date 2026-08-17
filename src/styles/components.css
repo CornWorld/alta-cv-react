@@ -9,6 +9,8 @@
     min-height: auto;
     display: flex;
     flex-direction: column;
+    /* 容器查询容器:双栏布局以内容区宽度判断,保证打印与屏幕 A4 预览一致 */
+    container-type: inline-size;
     margin: var(--web-page-margin);
   }
 
