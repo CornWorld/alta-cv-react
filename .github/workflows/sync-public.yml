@@ -1,7 +1,8 @@
-name: Sync main to public mirror
+name: Sync public to public mirror
+
 on:
   push:
-    branches: [main]
+    branches: [public]
 
 jobs:
   sync:
@@ -11,9 +12,22 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Push main to public mirror
+      # 安全防线：public 分支绝不应包含 facts/内部资料。
+      # 一旦检测到敏感文档混入 public，直接中断，禁止推送到公开仓库。
+      - name: Guard against leaking private facts
+        run: |
+          if [ -f "docs/resume-facts.md" ]; then
+            echo "::error::检测到 docs/resume-facts.md 存在于 public 分支，已中断同步，禁止推送到公开仓库！请检查是否误将 main/for/* 的 facts 内容合并进了 public。"
+            exit 1
+          fi
+          if [ -f "docs/resume-peer-feedback.md" ]; then
+            echo "::error::检测到 docs/resume-peer-feedback.md 存在于 public 分支，已中断同步，禁止推送到公开仓库！"
+            exit 1
+          fi
+
+      - name: Push public to public mirror
         env:
           PAT: ${{ secrets.PUBLIC_REPO_PAT }}
         run: |
           git config --local --unset-all http.https://github.com/.extraheader
-          git push https://x-access-token:${PAT}@github.com/CornWorld/alta-cv-react.git main
+          git push https://x-access-token:${PAT}@github.com/CornWorld/alta-cv-react.git public:main
