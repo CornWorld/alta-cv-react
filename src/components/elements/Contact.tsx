@@ -26,7 +26,7 @@ const Contact: React.FC<ContactProps> = ({ icon, href, children }) => {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center gap-3 hover:text-[var(--color-cv-accent)] transition-colors"
+      className="cv-contact-link flex items-center gap-3 hover:text-[var(--color-cv-accent)] transition-colors"
     >
       {content}
     </a>

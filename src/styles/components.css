@@ -96,6 +96,23 @@
     hyphens: auto;
   }
 
+  /* 正文外链尾部小箭头（↗）：标识可点击打开。
+     排除：Contact 链接已有前置图标；.cv-print-url 本身即 URL 文本 */
+  a[target="_blank"]:not(.cv-contact-link):not(.cv-print-url)::after {
+    content: "";
+    display: inline-block;
+    width: 0.65em;
+    height: 0.65em;
+    vertical-align: baseline;
+    transform: translateY(0.08em);
+    background-color: currentColor;
+    opacity: 0.55;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 7h10v10'/%3E%3Cpath d='M7 17 17 7'/%3E%3C/svg%3E")
+      center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 7h10v10'/%3E%3Cpath d='M7 17 17 7'/%3E%3C/svg%3E")
+      center / contain no-repeat;
+  }
+
   .cv-event {
     margin-bottom: var(--cv-item-spacing-y);
   }
