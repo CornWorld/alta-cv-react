@@ -96,20 +96,26 @@
     hyphens: auto;
   }
 
-  /* 正文外链尾部小箭头（↗）：标识可点击打开。
+  /* 正文外链右上角小箭头（↗ 上标位）：标识可点击打开。
+     绝对定位 + padding-right 留位，不撑行高、不扰动换行。
      排除：Contact 链接已有前置图标；.cv-print-url 本身即 URL 文本 */
+  a[target="_blank"]:not(.cv-contact-link):not(.cv-print-url) {
+    position: relative;
+    padding-right: 0.5em;
+  }
+
   a[target="_blank"]:not(.cv-contact-link):not(.cv-print-url)::after {
     content: "";
-    display: inline-block;
-    width: 0.65em;
-    height: 0.65em;
-    vertical-align: baseline;
-    transform: translateY(0.08em);
+    position: absolute;
+    top: 0.08em;
+    right: 0.02em;
+    width: 0.5em;
+    height: 0.5em;
     background-color: currentColor;
-    opacity: 0.55;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 7h10v10'/%3E%3Cpath d='M7 17 17 7'/%3E%3C/svg%3E")
+    opacity: 0.85;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 7h10v10'/%3E%3Cpath d='M7 17 17 7'/%3E%3C/svg%3E")
       center / contain no-repeat;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 7h10v10'/%3E%3Cpath d='M7 17 17 7'/%3E%3C/svg%3E")
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 7h10v10'/%3E%3Cpath d='M7 17 17 7'/%3E%3C/svg%3E")
       center / contain no-repeat;
   }
 
