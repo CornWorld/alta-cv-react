@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "preview:a4": "VITE_A4=1 vite preview",
+    "export:pdf": "node scripts/export-pdf.mjs",
     "deploy": "pnpm build && wrangler pages deploy dist --project-name=cv"
   },
   "dependencies": {
@@ -27,6 +28,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.26",
     "globals": "^16.5.0",
+    "playwright-core": "^1.63.0",
     "tailwindcss": "4.3.3",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.65.0",

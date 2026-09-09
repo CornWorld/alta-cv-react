@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# pdf 导出产物
+export
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -7,6 +7,12 @@
     margin: 12mm;
   }
 
+  /* 画布固化白底：headless 导出（printBackground: true）与手动打印（勾选背景图形）
+     都得到不透明白纸，避免透明画布在部分 PDF 查看器/缩略图中被合成为黑底 */
+  html,
+  body {
+    background: #fff;
+  }
   nav,
   button,
   .no-print {
