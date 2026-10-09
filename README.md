@@ -5,9 +5,10 @@
 ## 特性
 
 - React/TSX 直接描述简历结构，适合把简历当作可维护的前端页面管理。
-- `Section`、`Event`、`List`、`Contact`、`Tag`、`Achievement` 等组件覆盖常见简历块。
+- `Section`、`Event`（支持嵌套层级与 inlineMeta）、`List`、`Contact`、`Tag`、`Achievement`、`SideProject` 等组件覆盖常见简历块。
 - 主题由 CSS 变量驱动，`ThemeProvider` 会在根节点写入 `data-theme`。
-- 支持深色主题样式文件，并保留 A4 构建/预览脚本。
+- 双栏布局基于容器查询与黄金比例变量，A4 页边距支持 CSS margin 简写自定义。
+- 脚本化确定性 PDF 导出（headless Chromium 复用本机浏览器 + 页数溢出守卫）。
 - 基于 Vite 构建，可部署到 Cloudflare Pages 等静态托管平台。
 
 ## 技术栈
@@ -45,6 +46,40 @@ A4 模式构建与预览：
 pnpm build:a4
 pnpm preview:a4
 ```
+
+### A4 页边距（支持 CSS margin 简写）
+
+默认 A4 页边距为 `12mm`。可用 CSS margin 简写语法自定义（1/2/3/4 个值），屏幕 A4 预览与打印 `@page` 自动保持一致：
+
+- `12mm` —— 四边相同
+- `12mm 8mm` —— 上下 / 左右
+- `12mm 8mm 10mm` —— 上 / 左右 / 下
+- `12mm 8mm 10mm 6mm` —— 上 / 右 / 下 / 左
+
+每个值必须是带单位的 CSS 长度（如 `px`、`pt`、`mm`、`cm`、`em`、`rem` 等；`0` 可省略单位）。不支持 `auto`、`calc(...)`、百分比。非法输入会回退到默认 `12mm` 并在控制台告警。
+
+**构建期（环境变量）：**
+
+```bash
+VITE_A4_MARGIN="12mm 8mm 10mm 6mm" pnpm dev:a4
+```
+
+**运行时（控制台调试 API）：**
+
+```js
+window.CV.a4Margin("12mm 8mm"); // 应用并返回规范化后的 4 值简写，如 "12mm 8mm 12mm 8mm"
+window.CV.a4Margin(); // 读取当前已生效的简写（无副作用）
+```
+
+> 注：打印 `@page` 边距由 JS 注入字面量实现（Chrome 的 `@page` 不解析 CSS 变量），CSS 中保留 12mm 作为无 JS 时的回退。
+
+### 导出 PDF
+
+```bash
+pnpm export:pdf
+```
+
+脚本化确定性导出（`scripts/export-pdf.mjs`）：以 print 仿真 + `networkidle` + `fonts.ready` 等待页面就绪后，用 headless Chromium 打印为 PDF；页边距从页面运行时 `window.CV.a4Margin()` 读取，与 `--a4-margin-*` / `@page` 注入同源。内置页数守卫 `--max-pages`，超出页数即以退出码 1 失败，防止内容溢出到第二页而不自知。
 
 部署到 Cloudflare Pages：
 
