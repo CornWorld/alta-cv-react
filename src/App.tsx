@@ -9,13 +9,13 @@ import ThemeProvider from "./theme/ThemeProvider";
 import Typography from "./components/elements/Typography";
 import Contact from "./components/elements/Contact";
 import {
-  FaBriefcase,
   FaTrophy,
   FaEnvelope,
   FaPhone,
   FaGithub,
   FaHome,
 } from "react-icons/fa";
+import { RiWechatFill } from "react-icons/ri";
 import "./App.css";
 import PrintUrl from "./components/elements/PrintUrl";
 
@@ -64,13 +64,14 @@ function App() {
         <div className="grid grid-cols-1 cv-layout-grid gap-[var(--cv-column-gap)]">
           <div className="cv-layout-main">
             <Section title="实习经历">
-              {/* 公司/部门/内部平台名已脱敏，保留业务方向与技术内容 */}
+              {/* 内部平台名等仍脱敏；公司信息保留 */}
               <Event
-                title="某头部大厂 · 生态电商方向 全栈开发（实习）"
+                title="腾讯 WXG 微信小店 电商治理 全栈开发"
                 icon={
-                  <FaBriefcase className="text-[var(--color-cv-accent)] text-2xl" />
+                  <RiWechatFill className="text-[#1AAD19] text-2xl" />
                 }
                 date="2025.03 - 至今"
+                location="广州，电商产品部"
               >
                 <Event
                   title="电商数据基建 · 商品基建"
